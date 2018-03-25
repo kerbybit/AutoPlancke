@@ -7,118 +7,100 @@ function hypixelPlancke(name, game) {
 
     // return to break out of function
     return;
-    var generalStats = ""
   }
-switch (game.toLowerCase()) {
+  
+  // fixes the game to match what the website expects
+  game = hypixelPlanckeFixGame(game);
+
+  // opens website
+  var link = "http://plancke.io/hypixel/player/stats/" + name;
+  if (game != undefined) {link += "#" + game;}
+  print(java.awt.Desktop.getDesktop().browse(new java.net.URI(link)));
+  event.setCancelled(true);
+  ChatLib.chat("&aOpening &b" + link);
+}
+
+function hypixelPlanckeFixGame(game) {
+  switch (game.toLowerCase()) {
     case "bb":
-    case "BuildBattle":
-        game = "BuildBattle";
-        break;
+    case "buildbattle":
+      return "BuildBattle";
     case "arcade":
-        game = "Arcade";
-        break;
+      return "Arcade";
     case "bw":
     case "bedwar":
     case "bedwars":
-        game = "Bedwars";
-        break;
-     case "bsg":
-     case "blitzsurvivalgames":
-     case "hg":
-     case "hungergames":
-        game= "HungerGames";
-        break;
+      return "Bedwars";
+    case "bsg":
+    case "blitzsurvivalgames":
+    case "hg":
+    case "hungergames":
+      return "HungerGames";
     case "cac":
     case "copsandcrims":
     case "mcgo":
-        game = "MCGO";
-        break;
+      return "MCGO";
     case "cw":
     case "crazywall":
     case "crazywalls":
     case "truecombat":
-        game = "TrueCombat";
-        break;
+      return "TrueCombat";
     case "mw":
     case "megawall":
     case "megawalls":
     case "walls3":
-        game = "Walls3";
-        break;
+      return "Walls3";
     case "mm":
     case "murdermystery":
-        game = "MurderMystery";
-        break;
+      return "MurderMystery";
     case "sc":
     case "skyclash":
-        game = "SkyClash";
-        break;
+      retrun "SkyClash";
     case "sw":
     case "skywar":
     case "skywars":
-        game = "SkyWars";
-        break;
+      return "SkyWars";
     case "ss":
     case "sc":
     case "supersmash":
     case "smashheroes":
     case "smashhero":
-        game = "SuperSmash";
-        break;
+      return "SuperSmash";
     case "suhc":
     case "speeduhc":
-        game = "SpeedUHC";
-        break;
+      return "SpeedUHC";
     case "tntgame":
     case "tntgames":
     case "tg":
-        game = "TNTGames";
-        break;
+      return "TNTGames";
     case "uhc":
-        game = "UHC";
-        break;
+      return "UHC";
     case "wl":
     case "warlord":
     case "warlords":
-        game = "Warlords";
-        break;
+      return "Warlords";
     case "arena":
-        game = "Arena";
-        break;
+      return "Arena";
     case "pb":
     case "paintball":
-        game = "Paintball";
-        break;
+      return "Paintball";
     case "quake":
-        game = "Quake";
-        break;
+      return "Quake";
     case "tkr":
     case "turbokartracers":
     case "turbokart":
     case "turbokartracer":
     case "gingerbread":
     case "gb":
-        game = "GingerBread";
-        break;
+      return "GingerBread";
     case "vampirez":
-        game = "VampireZ";
-        break;
+      return "VampireZ";
     case "wall":
     case "walls":
-        game = "Walls";
-        break;
+      return "Walls";
     case "general":
-        game = generalStats;
-        break;
+      return "generalStats";
     default:
-        game = undefined;
-        return;
-}
-
-  // opens website
-  var link = "http://plancke.io/hypixel/player/stats/" + name;
-  if (game != undefined) {link += "#" + game;}
-  print(java.awt.Desktop.getDesktop().browse(new java.net.URI(link)));
-  event.setCanceled(true);
-  ChatLib.chat("&aOpening &b" + link);
+      return undefined
+  }
 }
